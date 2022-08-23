@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap');
+
+
+*, *::before, *::after
+{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Rubik Dirt';
+}
+
+
+:root 
+{
+    --text-color:hsl(345, 95%, 68%);
+    --top-color:hsl(268, 22%, 13%);
+    --bottom-color:hsl(236, 21%, 26%);
+    --shadow:hsl(235, 16%, 14%);;
+     --Dark-desaturated-blue: hsl(236, 21%, 26%);
+    --Very-dark-blue: hsl(235, 16%, 14%);
+    --Very-dark-mostly-black-blue: hsl(234, 17%, 12%);
+    --Soft-red: hsl(345, 95%, 68%);
+    --Grayish-blue: hsl(237, 18%, 59%);
+    
+}
+
+body
+{
+    background-color:var( --Very-dark-mostly-black-blue);
+}
+
+.clock 
+{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+}
+
+.container h1 
+{
+    text-align:center;
+    margin:2rem 0;
+    color:white;
+    letter-spacing:4px;
+    text-transform:uppercase;
+}
+
+.bg 
+{
+    position:absolute;
+    z-index:-1;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    
+}
+
+.bg-rock
+{
+    position:fixed;
+    z-index:-1;
+    width:100%;
+    height:30vh;
+    object-fit:cover;
+    pointer-events:none;
+    bottom:0;
+    left:0;
+    
+    
+}
+.container 
+{
+    position:fixed;
+    top:10%;
+    left:50%;
+    
+    transform:translateX(-50%);
+}
+
+
+.flip-card 
+{
+    display:inline-flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    background-color:black;
+    border-radius:10px;
+    overflow:hidden;
+    font-size:7rem;
+    position:relative;
+    box-shadow: 0 10px 0 var(--shadow);
+    color: var( --text-color);
+    margin:0 .5rem;
+    
+    
+}
+
+.attri 
+{
+    position:fixed;
+    bottom:40px;
+    width:100%;
+    text-align:center;
+    color:white;
+}
+.attri a 
+{
+    color:var(--Soft-red);
+}
+
+
+
+.flip-card .top, .flip-card .bottom
+{
+    line-height:1;
+    padding:.25em;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    overflow:hidden;
+    height: .75em;
+    position:relative;
+}
+
+
+.flip-card .top-flip 
+{
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    z-index:10;
+    display:flex;
+    padding:.25em;
+    line-height:1;
+    height:100%;
+    justify-content:center;
+    transform-origin:bottom;
+    animation: flip-top 250ms ease-in;
+    background-color:inherit; 
+    border-top:1px solid black;
+    border-radius:10px 10px  0 0;
+   
+}
+
+@keyframes flip-top {
+    100%
+    {
+        transform:rotateX(90deg);
+        
+    }
+}
+
+
+
+.flip-card .bottom-flip 
+{
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    display:flex;
+    padding:.25em;
+    line-height:1;
+    z-index:10;
+    height:100%;
+    justify-content:center;
+    transform-origin:top;
+    align-items:flex-end;
+    overflow:hidden;
+    transform:rotateX(90deg);
+    animation: flip-bottom 250ms ease-in 250ms;
+    background-color:inherit;
+    border-bottom:1px solid black;
+    border-radius:0 0  10px 10px;
+    box-shadow:0 0 3px var(--shadow);
+}
+
+@keyframes flip-bottom {
+    100%
+    {
+        transform:rotateX(0deg)
+    }
+}
+.flip-card .top 
+{
+    align-items:flex-start;
+    background-color:var(--top-color);
+    border-bottom:2px solid rgba(0,0,0,0.5);
+    transform-origin:bottom;
+}
+.flip-card .bottom
+{
+    background-color:var(--bottom-color);
+    align-items:flex-end;
+    
+}
+
+
+@media screen and (max-width:1083px)
+{
+    .flip-card 
+    {
+        font-size:3rem;
+    }
+}
+
+
+@media screen and (max-width:413px)
+{
+    .flip-card 
+    {
+        font-size:3rem;
+    }
+    .container 
+    {
+        width:80%;
+    }
+}
